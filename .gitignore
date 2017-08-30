@@ -1,0 +1,5 @@
+# Exclude build Directory
+build/*
+
+# Exclude node_modules Directory
+node_modules/*
