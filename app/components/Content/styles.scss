@@ -2,20 +2,29 @@
 
 .component-content {
 
-  .gridCentrade {
-    width: 1850px;
-    padding: 24px 18px 0px;
-    margin: auto;
+  .item {
+    .content {
+      padding: 10px;
+      img { border-radius: $radius-base; }
+    }
+    .content:hover {
+      background-color: $color-3;
+      border-radius: $radius-base;
+    }
   }
 
-  @include respond-to(mobile) { 
-    .gridCentrade { width: 90%; }
+  .item:hover {
+    cursor: zoom-in;
   }
-  @include respond-to(tablet) { 
-    .gridCentrade { width: 90%; }
-  }
-  @include respond-to(desktop) { 
-    .gridCentrade { width: 90%; }
-  }
+
+  // @include respond-to(mobile) { 
+  //   .gridCentrade { width: 90%; }
+  // }
+  // @include respond-to(tablet) { 
+  //   .gridCentrade { width: 90%; }
+  // }
+  // @include respond-to(desktop) { 
+  //   .gridCentrade { width: 90%; }
+  // }
 
 }

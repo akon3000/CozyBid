@@ -33,10 +33,12 @@
     "webpack-dev-server": "^2.4.4"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
     "material-ui": "^0.17.4",
     "react": "^15.5.4",
     "react-dom": "^15.5.4",
     "react-flexbox-grid": "^1.1.2",
+    "react-grid-layout": "^0.15.0",
     "react-icons": "^2.2.3",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
