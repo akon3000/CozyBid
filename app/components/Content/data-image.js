@@ -9,7 +9,7 @@ export default [
     id: 2,
     url: 'https://c1.staticflickr.com/9/8147/7609526752_02fea6b64b_c.jpg',
     refer: 'https://www.flickr.com',
-    layout: { x: 3, y: 0, w: 3, h: 11 },
+    layout: { x: 3, y: 0, w: 3, h: 12 },
   },
   {
     id: 3,
@@ -43,9 +43,9 @@ export default [
   },
   {
     id: 8,
-    url: 'https://static1.squarespace.com/static/55c8073fe4b02a74ffe18e48/55d2acc1e4b04baeaff3c763/55d2acdbe4b016caae2eb176/1439870172727/memento_mori_by_yuumei-d689kc2.jpg',
+    url: 'https://static1.squarespace.com/static/55c8073fe4b02a74ffe18e48/55ce76f6e4b01a825f1a953b/55ce7708e4b02198ab274ac5/1439594248575/connection_by_yuumei-d5xh09x.jpg',
     refer: 'https://www.yuumeiart.com',
-    layout: { x: 9, y: 1, w: 3, h: 0 },
+    layout: { x: 9, y: 1, w: 3, h: 12 },
   },
   {
     id: 9,
@@ -53,4 +53,10 @@ export default [
     refer: 'https://www.pixiv.net',
     layout: { x: 3, y: 17, w: 3, h: 0 },
   },
+  {
+    id: 10,
+    url: 'https://static1.squarespace.com/static/55c8073fe4b02a74ffe18e48/55fb03bbe4b07e0703d3d799/55fb03e1e4b0df453d7d2fe6/1442513890983/what+it+takes+to+fly.jpg',
+    refer: 'https://www.yuumeiart.com',
+    layout: { x: 9, y: 17, w: 3, h: 0 },
+  }
 ];
