@@ -1,0 +1,250 @@
+@import url(https://fonts.googleapis.com/css?family=Kanit:400,600);body {
+  margin: 0;
+  background-color: #FFFFFF;
+  font-family: 'Kanit', sans-serif; }
+
+body::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+  background-color: #F5F5F5; }
+
+body::-webkit-scrollbar-thumb {
+  background-color: #DDD;
+  border: 2px solid #DDD; }
+
+img {
+  max-width: 100%;
+  height: auto; }
+
+input,
+button {
+  font-family: 'Kanit', sans-serif; }
+
+button {
+  border: none;
+  outline: none;
+  padding: 0;
+  background-color: Transparent; }
+
+.react-grid-layout {
+  position: relative;
+  transition: height 200ms ease; }
+
+.react-grid-item {
+  transition: all 200ms ease;
+  transition-property: left, top; }
+
+.react-grid-item.cssTransforms {
+  transition-property: transform; }
+
+.react-grid-item.resizing {
+  z-index: 1;
+  will-change: width, height; }
+
+.react-grid-item.react-draggable-dragging {
+  transition: none;
+  z-index: 3;
+  will-change: transform; }
+
+.react-grid-item.react-grid-placeholder {
+  background: red;
+  opacity: 0.2;
+  transition-duration: 100ms;
+  z-index: 2;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none; }
+
+.react-grid-item > .react-resizable-handle {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  bottom: 0;
+  right: 0;
+  background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pg08IS0tIEdlbmVyYXRvcjogQWRvYmUgRmlyZXdvcmtzIENTNiwgRXhwb3J0IFNWRyBFeHRlbnNpb24gYnkgQWFyb24gQmVhbGwgKGh0dHA6Ly9maXJld29ya3MuYWJlYWxsLmNvbSkgLiBWZXJzaW9uOiAwLjYuMSAgLS0+DTwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DTxzdmcgaWQ9IlVudGl0bGVkLVBhZ2UlMjAxIiB2aWV3Qm94PSIwIDAgNiA2IiBzdHlsZT0iYmFja2dyb3VuZC1jb2xvcjojZmZmZmZmMDAiIHZlcnNpb249IjEuMSINCXhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiDQl4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjZweCIgaGVpZ2h0PSI2cHgiDT4NCTxnIG9wYWNpdHk9IjAuMzAyIj4NCQk8cGF0aCBkPSJNIDYgNiBMIDAgNiBMIDAgNC4yIEwgNCA0LjIgTCA0LjIgNC4yIEwgNC4yIDAgTCA2IDAgTCA2IDYgTCA2IDYgWiIgZmlsbD0iIzAwMDAwMCIvPg0JPC9nPg08L3N2Zz4=");
+  background-position: bottom right;
+  padding: 0 3px 3px 0;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  box-sizing: border-box;
+  cursor: se-resize; }
+/* devices screen */
+.component-topbar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 16px;
+  border-bottom: 1px solid #DDD;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFF;
+  z-index: 10; }
+
+.component-topbar button {
+  width: 100%;
+  height: 100%; }
+
+.component-topbar .btn-line {
+  padding: 0 15px;
+  display: flex; }
+
+.component-topbar .logo {
+  width: 50px;
+  height: 50px; }
+  .component-topbar .logo > :hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 50%; }
+  .component-topbar .logo img {
+    width: 30px;
+    height: 30px; }
+  .component-topbar .logo button {
+    cursor: pointer; }
+
+.component-topbar .search {
+  width: 85%;
+  height: 40px;
+  border-radius: 5px;
+  background-color: #EFEFEF; }
+  .component-topbar .search button {
+    text-align: left; }
+  .component-topbar .search .icon-search {
+    color: #b5b5b5;
+    width: 23px;
+    height: 23px; }
+  .component-topbar .search .input-search {
+    width: 100%;
+    margin-left: 20px;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    font-size: 16px;
+    font-weight: 600;
+    background-color: transparent; }
+
+.component-topbar .user {
+  height: 50px; }
+  .component-topbar .user > :hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 30px;
+    cursor: pointer; }
+  .component-topbar .user img {
+    width: 35px;
+    height: 35px;
+    margin: 0 7px;
+    border-radius: 50%; }
+  .component-topbar .user label {
+    margin: 0 7px;
+    cursor: pointer; }
+  .component-topbar .user button {
+    color: #b5b5b5;
+    font-weight: 600;
+    display: flex;
+    align-items: center; }
+
+@media only screen and (max-width: 767px) {
+  .component-topbar .search {
+    width: 50%; } }
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .component-topbar .search {
+    width: 65%; } }
+
+@media only screen and (max-width: 1500px) and (min-width: 1024px) {
+  .component-topbar .search {
+    width: 70%; } }
+/* devices screen */
+.component-content .gridCentrade {
+  width: 1440px;
+  margin: auto; }
+
+.component-content .item {
+  padding: 10px; }
+  .component-content .item .content {
+    padding: 10px; }
+    .component-content .item .content img {
+      border-radius: 5px; }
+  .component-content .item .content:hover {
+    background-color: rgba(0, 0, 0, 0.06);
+    border-radius: 5px; }
+
+.component-content .item:hover {
+  cursor: zoom-in; }
+
+@media only screen and (max-width: 767px) {
+  .component-content .gridCentrade {
+    width: 425px; } }
+
+@media only screen and (max-width: 1023px) and (min-width: 768px) {
+  .component-content .gridCentrade {
+    width: 768px; } }
+
+@media only screen and (max-width: 1500px) and (min-width: 1024px) {
+  .component-content .gridCentrade {
+    width: 1024px; } }
+/* devices screen */
+.component-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #DDD;
+  z-index: 20;
+  overflow: auto; }
+  .component-overlay .close-btn {
+    font-size: 40px;
+    color: #B5B5B5;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    z-index: 6; }
+  .component-overlay .close-btn:hover {
+    top: 19px;
+    color: #000; }
+  .component-overlay .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5; }
+  .component-overlay .container {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    width: 1024px;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    z-index: 6; }
+    .component-overlay .container .box {
+      padding: 30px;
+      border-radius: 5px;
+      background-color: #FFF; }
+      .component-overlay .container .box .linkto {
+        padding: 5px 15px;
+        font-size: 18px;
+        margin-bottom: 20px;
+        background-color: rgba(0, 0, 0, 0.06);
+        float: right;
+        border-radius: 5px;
+        cursor: pointer; }
+      .component-overlay .container .box .linkto:hover {
+        background-color: #F8F8F8; }
+    .component-overlay .container img {
+      border-radius: 5px; }
+  @media only screen and (max-width: 767px) {
+    .component-overlay .container {
+      width: 425px; } }
+  @media only screen and (max-width: 1023px) and (min-width: 768px) {
+    .component-overlay .container {
+      width: 568px; } }
+  @media only screen and (max-width: 1500px) and (min-width: 1024px) {
+    .component-overlay .container {
+      width: 1024px; } }
