@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
-import ReactGridLayout from 'react-grid-layout';
+import { Responsive, WidthProvider } from 'react-grid-layout';
+const ResponsiveReactGridLayout = WidthProvider(Responsive);
 
 import './styles.scss';
 
@@ -12,30 +12,27 @@ class Content extends Component {
     super(props);
     this.state = {
       dataImage: DataImage,
-      width: window.innerWidth,
     };
   }
 
-  componentDidMount() {
-    window.addEventListener('resize', () => this.setState({ width: window.innerWidth }));
-  }
-
   render() {
-    const layout = [];
+    const layouts = { lg: [], md: [], sm: [], xs: [] };
     this.state.dataImage.forEach((x) => {
-      layout.push({ i: x.id.toString(), ...x.layout });
+      layouts.lg.push({ i: x.id.toString(), ...x.lg });
+      layouts.md.push({ i: x.id.toString(), ...x.md });
+      layouts.sm.push({ i: x.id.toString(), ...x.sm });
+      layouts.xs.push({ i: x.id.toString(), ...x.xs });
     });
     
     return (
       <div className="component-content" style={{ paddingTop: this.props.tobBarHeight }}>
         <div className="gridCentrade">
-          <ReactGridLayout
+          <ResponsiveReactGridLayout
             isDraggable={Boolean(false)}
             isResizable={Boolean(false)}
-            layout={layout}
-            rowHeight={30}
-            cols={12}
-            width={this.state.width}
+            layouts={layouts}
+            breakpoints={{ lg: 1440, md: 1024, sm: 860, xs: 768, xs: 425 }}
+            cols={{ lg: 12, md: 12, sm: 12, xs: 12 }}
           >
             { 
               this.state.dataImage.map((x, index) => (
@@ -46,7 +43,7 @@ class Content extends Component {
                 </div>
               ))
             }
-          </ReactGridLayout>
+          </ResponsiveReactGridLayout>
         </div>
       </div>
     )

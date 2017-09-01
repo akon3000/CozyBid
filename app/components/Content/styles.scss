@@ -2,7 +2,13 @@
 
 .component-content {
 
+  .gridCentrade {
+    width: 1440px;
+    margin: auto;
+  }
+
   .item {
+    padding: 10px;
     .content {
       padding: 10px;
       img { border-radius: $radius-base; }
@@ -17,14 +23,14 @@
     cursor: zoom-in;
   }
 
-  // @include respond-to(mobile) { 
-  //   .gridCentrade { width: 90%; }
-  // }
-  // @include respond-to(tablet) { 
-  //   .gridCentrade { width: 90%; }
-  // }
-  // @include respond-to(desktop) { 
-  //   .gridCentrade { width: 90%; }
-  // }
+  @include respond-to(mobile) { 
+    .gridCentrade { width: 425px; }
+  }
+  @include respond-to(tablet) { 
+    .gridCentrade { width: 768px; }
+  }
+  @include respond-to(desktop) { 
+    .gridCentrade { width: 1024px; }
+  }
 
 }
