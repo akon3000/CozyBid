@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 const config = {
     entry: {
@@ -10,11 +12,6 @@ const config = {
         // sourceMapFilename: '[name].map',
         path: path.resolve(__dirname, 'build'),
     },
-    // devtool: '#source-map',
-    devServer: {
-        historyApiFallback: false,
-        // contentBase: './build',
-    },
     module: {
         rules: [
             {
@@ -24,21 +21,14 @@ const config = {
             },
             {
                 test: /\.css$/,
-                use: [ 'style-loader', 'extract-loader', 'css-loader' ],
+                use: [ 'style-loader', 'css-loader' ],
             },
             {
                 test: /\.scss$/,
-                use: [
-                    {
-                        loader: "style-loader" // creates style nodes from JS strings
-                    }, 
-                    {
-                        loader: "css-loader" // translates CSS into CommonJS
-                    },
-                    {
-                        loader: "sass-loader" // compiles Sass to CSS
-                    }
-                ],
+                use: ExtractTextPlugin.extract({
+                    fallback: 'style-loader',
+                    use: ['css-loader', 'sass-loader']
+                })
             },
             {
                 test: /\.(jpg|png|svg|css)$/,
@@ -48,6 +38,11 @@ const config = {
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'CozyBid - Test',
+            template: './app/index.ejs',
+        }),
+        new ExtractTextPlugin('style.css'),
         new webpack.NoErrorsPlugin()
     ],
 }

@@ -16,6 +16,7 @@ class Content extends Component {
   }
 
   render() {
+    const { onChoose, tobBarHeight } = this.props;
     const layouts = { lg: [], md: [], sm: [], xs: [] };
     this.state.dataImage.forEach((x) => {
       layouts.lg.push({ i: x.id.toString(), ...x.lg });
@@ -25,7 +26,7 @@ class Content extends Component {
     });
     
     return (
-      <div className="component-content" style={{ paddingTop: this.props.tobBarHeight }}>
+      <div className="component-content" style={{ paddingTop: tobBarHeight }}>
         <div className="gridCentrade">
           <ResponsiveReactGridLayout
             isDraggable={Boolean(false)}
@@ -37,7 +38,7 @@ class Content extends Component {
             { 
               this.state.dataImage.map((x, index) => (
                 <div key={x.id} className="item">
-                  <div className="content">
+                  <div className="content" onClick={() => onChoose(x)}>
                     <img src={x.url} alt={x.refer} />
                   </div>
                 </div>
@@ -46,11 +47,12 @@ class Content extends Component {
           </ResponsiveReactGridLayout>
         </div>
       </div>
-    )
+    );
   }
 }
 
 Content.propTypes = {
+  onChoose: PropTypes.func.isRequired,
   tobBarHeight: PropTypes.number,
 };
 

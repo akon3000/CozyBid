@@ -1,0 +1,80 @@
+@import '../../variable.scss';
+
+.component-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-1;
+  z-index: 20;
+  overflow: auto;
+
+  .close-btn {
+    font-size: 40px;
+    color: #B5B5B5;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    z-index: 6;
+  }
+  .close-btn:hover {
+    top: 19px;
+    color: #000;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+  }
+
+  .container {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    width: 1024px;
+    transform: translate(-50%, 0);
+    display: flex;
+    justify-content: center;
+    z-index: 6;
+
+    .box {
+      padding: 30px;
+      border-radius: $radius-base;
+      background-color: #FFF;
+
+      .linkto {
+        padding: 5px 15px;
+        font-size: 18px;
+        margin-bottom: 20px;
+        background-color: $color-3;
+        float: right;
+        border-radius: $radius-base;
+        cursor: pointer;
+      }
+
+      .linkto:hover {
+        background-color: #F8F8F8;
+      }
+    }
+
+    img { border-radius: $radius-base; }
+  }
+
+  @include respond-to(mobile) { 
+    .container { width: 425px; }
+  }
+  @include respond-to(tablet) { 
+    .container { width: 568px; }
+  }
+  @include respond-to(desktop) { 
+    .container { width: 1024px; }
+  }
+
+}
