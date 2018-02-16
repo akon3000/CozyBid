@@ -27,7 +27,7 @@
     .gridCentrade { width: 425px; }
   }
   @include respond-to(tablet) { 
-    .gridCentrade { width: 768px; }
+    .gridCentrade { width: 500px; }
   }
   @include respond-to(desktop) { 
     .gridCentrade { width: 1024px; }

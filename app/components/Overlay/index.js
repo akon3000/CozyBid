@@ -1,13 +1,21 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from 'react-icons/lib/md/close';
+import TextField from 'material-ui/TextField';
 
 import './styles.scss';
 
 class Overlay extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      img: props.data.url
+    };
+  }
+
+  handleImage() {
+    this.props.reducer.dispatch({ type: "CHANGE_IMAGE", id: this.props.data.id, url: this.state.img });
+    this.props.onClose();
   }
 
   render() {
@@ -23,6 +31,10 @@ class Overlay extends Component {
             </a>
             <br />
             <img src={data.url} alt={data.refer} />
+            <br />
+            <br />
+            <button className="linkto" onClick={() => this.handleImage()}>Change Image</button>
+            <input className="input-box" placeholder={this.state.img} onChange={(event) => this.setState({ img: event.target.value })} />
           </div>
         </div>
       </div>

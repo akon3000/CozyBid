@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import StoreImage from './components/ReduxStore/StoreImage';
 
 import './gobal.scss';
 import TopBar from './components/TopBar';
@@ -35,10 +36,12 @@ class Application extends Component {
         <Content
           tobBarHeight={this.state.tobBarHeight}
           onChoose={(dataOverlay) => this.setState({ dataOverlay, isOverlay: true })}
+          reducer={StoreImage}
         />
         
         { this.state.isOverlay &&
           <Overlay
+            reducer={StoreImage}
             data={this.state.dataOverlay}
             onClose={() => this.setState({ isOverlay: false, dataOverlay: null })}
           />

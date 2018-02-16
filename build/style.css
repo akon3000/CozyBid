@@ -180,7 +180,7 @@ button {
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .component-content .gridCentrade {
-    width: 768px; } }
+    width: 500px; } }
 
 @media only screen and (max-width: 1500px) and (min-width: 1024px) {
   .component-content .gridCentrade {
@@ -231,10 +231,19 @@ button {
         padding: 5px 15px;
         font-size: 18px;
         margin-bottom: 20px;
+        margin-left: 3px;
         background-color: rgba(0, 0, 0, 0.06);
         float: right;
         border-radius: 5px;
         cursor: pointer; }
+      .component-overlay .container .box .input-box {
+        width: 270px;
+        height: 33px;
+        border-top: none;
+        border-left: none;
+        border-right: none; }
+      .component-overlay .container .box .input-box:focus {
+        outline: none; }
       .component-overlay .container .box .linkto:hover {
         background-color: #F8F8F8; }
     .component-overlay .container img {
