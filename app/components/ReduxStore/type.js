@@ -1,0 +1,2 @@
+export const CHANGE_IMAGE = "CHANGE_IMAGE";
+export const RANDOM_IMAGE = "RANDOM_IMAGE";

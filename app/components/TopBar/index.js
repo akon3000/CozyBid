@@ -6,6 +6,8 @@ import './styles.scss';
 import UserIcon from '../../assert/007.png';
 import LogoIcon from '../../assert/photo.svg';
 
+import { RANDOM_IMAGE } from '../ReduxStore/type';
+
 class TopBar extends Component {
   constructor(props) {
     super(props);
@@ -16,7 +18,7 @@ class TopBar extends Component {
     return (
       <div className="component-topbar" ref="el">
         <div className="logo">
-          <button>
+          <button onClick={() => this.props.reducer.dispatch({ type: RANDOM_IMAGE })}>
             <img src={LogoIcon} />
           </button>
         </div>

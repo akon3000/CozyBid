@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import CloseIcon from 'react-icons/lib/md/close';
-import TextField from 'material-ui/TextField';
+
+import { CHANGE_IMAGE } from '../ReduxStore/type';
 
 import './styles.scss';
 
@@ -14,7 +15,7 @@ class Overlay extends Component {
   }
 
   handleImage() {
-    this.props.reducer.dispatch({ type: "CHANGE_IMAGE", id: this.props.data.id, url: this.state.img });
+    this.props.reducer.dispatch({ type: CHANGE_IMAGE, id: this.props.data.id, url: this.state.img });
     this.props.onClose();
   }
 

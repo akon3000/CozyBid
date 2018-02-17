@@ -9,26 +9,17 @@ class Content extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: props.reducer.getState()
+      dataImage: props.dataImage,
+      layouts: props.layouts
     };
   }
 
-  componentDidMount() {
-   this.props.reducer.subscribe(() => {
-     console.log(this.props.reducer.getState());
-     this.setState({ data: this.props.reducer.getState() });
-   });
+  componentWillReceiveProps(nextProps) {
+    this.setState({ dataImage: nextProps.dataImage, layouts: nextProps.layouts });
   }
 
   render() {
     const { onChoose, tobBarHeight } = this.props;
-    const layouts = { lg: [], md: [], sm: [], xs: [] };
-    this.state.data.forEach((x) => {
-      layouts.lg.push({ i: x.id.toString(), ...x.lg });
-      layouts.md.push({ i: x.id.toString(), ...x.md });
-      layouts.sm.push({ i: x.id.toString(), ...x.sm });
-      layouts.xs.push({ i: x.id.toString(), ...x.xs });
-    });
     
     return (
       <div className="component-content" style={{ paddingTop: tobBarHeight }}>
@@ -36,12 +27,13 @@ class Content extends Component {
           <ResponsiveReactGridLayout
             isDraggable={Boolean(false)}
             isResizable={Boolean(false)}
-            layouts={layouts}
+            layouts={this.state.layouts}
+            rowHeight={80}
             breakpoints={{ lg: 1440, md: 1024, sm: 768, xs: 425 }}
-            cols={{ lg: 12, md: 12, sm: 12, xs: 12 }}
+            cols={{lg: 12, md: 10, sm: 6, xs: 4}}
           >
             { 
-              this.state.data.map((x, index) => (
+              this.state.dataImage.map((x, index) => (
                 <div key={x.id} className="item">
                   <div className="content" onClick={() => onChoose(x)}>
                     <img src={x.url} alt={x.refer} />
