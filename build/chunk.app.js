@@ -60,7 +60,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "173ae33dc1917e496208"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c9df0de30331673ae9b1"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -7700,6 +7700,7 @@ var ADD_IMAGE = exports.ADD_IMAGE = "ADD_IMAGE";
 var REMOVE_IMAGE = exports.REMOVE_IMAGE = "REMOVE_IMAGE";
 var CHANGE_LINK = exports.CHANGE_LINK = "CHANGE_LINK";
 var REMOVE_ALL_IMAGE = exports.REMOVE_ALL_IMAGE = "REMOVE_ALL_IMAGE";
+var MAKE_LAYOUTS = exports.MAKE_LAYOUTS = "MAKE_LAYOUTS";
 
 /***/ }),
 /* 56 */
@@ -29437,17 +29438,94 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
-var generateLayout = function generateLayout(items) {
-  return items.map(function (item, i) {
-    var y = Math.ceil(Math.random() * 4) + 1;
-    return {
-      x: Math.floor(Math.random() * 5) * 2 % 12,
-      y: Math.floor(i / 6) * y,
-      w: 2,
-      h: y,
-      i: item.id.toString()
-    };
-  });
+var generateLayout = function generateLayout(items, type) {
+  switch (type) {
+
+    case "lg":
+      {
+        var stackX = 0;
+        return items.map(function (item, i) {
+          var val = {
+            x: stackX,
+            y: i,
+            w: 2,
+            h: 4,
+            i: item.id.toString()
+          };
+          stackX = stackX === 8 ? 0 : stackX + 2;
+          return val;
+        });
+      }
+
+    case "md":
+      {
+        var stackX = 0;
+        return items.map(function (item, i) {
+          var val = {
+            x: stackX,
+            y: i,
+            w: 2,
+            h: 4,
+            i: item.id.toString()
+          };
+          stackX = stackX === 8 ? 0 : stackX + 2;
+          return val;
+        });
+      }
+
+    case "sm":
+      {
+        var stackX = 0;
+        var stackWidth = 1;
+        return items.map(function (item, i) {
+          var height;
+          if (stackWidth === 1) height = 2;
+          if (stackWidth === 2) height = 3;
+          if (stackWidth === 3) height = 5;
+          var val = {
+            x: stackX,
+            y: i,
+            w: stackWidth,
+            h: stackWidth + height,
+            i: item.id.toString()
+          };
+          stackX = stackX === 3 ? 0 : stackX + stackWidth;
+          stackWidth = stackWidth === 3 ? 1 : stackWidth + 1;
+          return val;
+        });
+      }
+
+    case "xs":
+      {
+        var stackX = 0;
+        return items.map(function (item, i) {
+          var val = {
+            x: stackX,
+            y: i,
+            w: 2,
+            h: 4,
+            i: item.id.toString()
+          };
+          stackX = stackX === 2 ? 0 : stackX + 2;
+          return val;
+        });
+      }
+
+    default:
+      {
+        return items.map(function (item, i) {
+          var y = Math.ceil(Math.random() * 4) + 1;
+          return {
+            x: Math.floor(Math.random() * 5) * 2 % 12,
+            y: Math.floor(i / 6) * y,
+            w: 2,
+            h: y,
+            i: item.id.toString()
+          };
+        });
+      }
+
+  }
 };
 
 var reducer = function reducer(state, action) {
@@ -29478,7 +29556,18 @@ var reducer = function reducer(state, action) {
             md = generateLayout(state.dataImage),
             sm = generateLayout(state.dataImage),
             xs = generateLayout(state.dataImage);
-        state.layouts = _extends({}, state.layouts, { lg: [].concat(_toConsumableArray(lg)), md: [].concat(_toConsumableArray(md)), sm: [].concat(_toConsumableArray(md)), xs: [].concat(_toConsumableArray(xs)) });
+        state.layouts = _extends({}, state.layouts, { lg: [].concat(_toConsumableArray(lg)), md: [].concat(_toConsumableArray(md)), sm: [].concat(_toConsumableArray(sm)), xs: [].concat(_toConsumableArray(xs)) });
+        return state;
+      }
+
+    case _type.MAKE_LAYOUTS:
+      {
+        state.layouts = _extends({}, state.layouts, {
+          lg: [].concat(_toConsumableArray(generateLayout(state.dataImage, "lg"))),
+          md: [].concat(_toConsumableArray(generateLayout(state.dataImage, "md"))),
+          sm: [].concat(_toConsumableArray(generateLayout(state.dataImage, "sm"))),
+          xs: [].concat(_toConsumableArray(generateLayout(state.dataImage, "xs")))
+        });
         return state;
       }
 
@@ -29518,10 +29607,10 @@ var reducer = function reducer(state, action) {
 var store = (0, _redux.createStore)(reducer, {
   dataImage: _dataImage2.default,
   layouts: {
-    lg: generateLayout(_dataImage2.default),
-    md: generateLayout(_dataImage2.default),
-    sm: generateLayout(_dataImage2.default),
-    xs: generateLayout(_dataImage2.default)
+    lg: generateLayout(_dataImage2.default, "lg"),
+    md: generateLayout(_dataImage2.default, "md"),
+    sm: generateLayout(_dataImage2.default, "sm"),
+    xs: generateLayout(_dataImage2.default, "xs")
   }
 });
 
@@ -30203,7 +30292,7 @@ var TopBar = function (_Component) {
     key: 'addImage',
     value: function addImage() {
       this.props.reducer.dispatch({ type: _type.ADD_IMAGE });
-      this.randomLayout();
+      this.props.reducer.dispatch({ type: _type.MAKE_LAYOUTS });
     }
   }, {
     key: 'render',
@@ -30341,7 +30430,7 @@ var Content = function (_Component) {
           onChoose = _props.onChoose,
           tobBarHeight = _props.tobBarHeight;
 
-
+      console.log(this.state.layouts);
       return _react2.default.createElement(
         'div',
         { className: 'component-content', style: { paddingTop: tobBarHeight } },

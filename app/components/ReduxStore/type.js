@@ -4,3 +4,4 @@ export const ADD_IMAGE = "ADD_IMAGE";
 export const REMOVE_IMAGE = "REMOVE_IMAGE";
 export const CHANGE_LINK = "CHANGE_LINK";
 export const REMOVE_ALL_IMAGE = "REMOVE_ALL_IMAGE";
+export const MAKE_LAYOUTS = "MAKE_LAYOUTS";

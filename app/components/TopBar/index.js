@@ -8,7 +8,7 @@ import LogoIcon from '../../assert/photo.svg';
 import AddIcon from '../../assert/image-add.svg';
 import RemoveIcon from '../../assert/remove-folder.svg';
 
-import { RANDOM_IMAGE, ADD_IMAGE, REMOVE_ALL_IMAGE } from '../ReduxStore/type';
+import { RANDOM_IMAGE, ADD_IMAGE, REMOVE_ALL_IMAGE, MAKE_LAYOUTS } from '../ReduxStore/type';
 
 class TopBar extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class TopBar extends Component {
 
   addImage() {
     this.props.reducer.dispatch({ type: ADD_IMAGE });
-    this.randomLayout();
+    this.props.reducer.dispatch({ type: MAKE_LAYOUTS });
   }
 
   render() {

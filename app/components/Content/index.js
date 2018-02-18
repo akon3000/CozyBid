@@ -20,7 +20,7 @@ class Content extends Component {
 
   render() {
     const { onChoose, tobBarHeight } = this.props;
-    
+    console.log(this.state.layouts)
     return (
       <div className="component-content" style={{ paddingTop: tobBarHeight }}>
         <div className="gridCentrade">
