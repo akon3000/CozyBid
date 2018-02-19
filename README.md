@@ -1,3 +1,3 @@
-# CozyBid
-CozyBid is project React for Interview etc.
-[View example](https://akon3000.github.io/CozyBid/build/)
+# ReInterview
+This project is react website for Interview etc.
+[View example](https://akon3000.github.io/ReInterview/build/)
