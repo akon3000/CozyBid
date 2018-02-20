@@ -9,7 +9,7 @@ This project is react website for Interview etc. [View example](https://akon3000
 
 * * *
 
-**Note :** At this point you can run `npm run server` to see the example app at http://localhost:8080.
+**Note :** At this point you can run `npm run server` to see the example app at http://localhost:7000.
 
 
 * * *
