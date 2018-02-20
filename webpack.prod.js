@@ -31,9 +31,20 @@ const config = {
                 })
             },
             {
-                test: /\.(jpg|png|svg|css)$/,
-                use: [ 'url-loader' ]
+                test: /\.(jpg|png|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[path][name].[ext]'
+                        }  
+                    }
+                ]
             }
+            // {
+            //     test: /\.(jpg|png|svg|css)$/,
+            //     use: [ 'url-loader' ]
+            // }
         ]
     },
     plugins: [
