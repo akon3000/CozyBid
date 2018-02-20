@@ -39,8 +39,9 @@ const config = {
     plugins: [
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
-            title: 'CozyBid - Test',
+            title: 'ReInterview - Test',
             template: './app/index.ejs',
+            favicon: './app/assert/favicon.png',
         }),
         new ExtractTextPlugin('style.css'),
         new webpack.NoErrorsPlugin()
