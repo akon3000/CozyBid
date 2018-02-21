@@ -7,17 +7,16 @@ import TopBar from './components/TopBar';
 import Content from './components/Content';
 import Overlay from './components/Overlay';
 
-
-
 class Application extends Component {
   constructor(props) {
     super(props);
+    const { layouts, dataImage } = StoreImage.getState();
     this.state = {
       tobBarHeight: 0,
       dataOverlay: null,
       isOverlay: false,
-      layouts: StoreImage.getState().layouts,
-      dataImage: StoreImage.getState().dataImage
+      layouts,
+      dataImage
     };
   }
 
@@ -39,7 +38,7 @@ class Application extends Component {
       <div>
         
         <TopBar
-          reducer={StoreImage}
+          dispatch={(action) => StoreImage.dispatch(action)}
           ref={(el) => { this.topbarEl = el; }}
         />
 
@@ -52,7 +51,7 @@ class Application extends Component {
         
         { this.state.isOverlay &&
           <Overlay
-            reducer={StoreImage}
+            dispatch={(action) => StoreImage.dispatch(action)}
             data={this.state.dataOverlay}
             onClose={() => this.setState({ isOverlay: false, dataOverlay: null })}
           />

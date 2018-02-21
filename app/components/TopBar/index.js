@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-// import SearchIcon from 'react-icons/lib/fa/search';
 
 import './styles.scss';
 
-// import UserIcon from '../../assert/007.png';
 import LogoIcon from '../../assert/photo.svg';
 import AddIcon from '../../assert/image-add.svg';
 import RemoveIcon from '../../assert/remove-folder.svg';
@@ -17,16 +15,16 @@ class TopBar extends Component {
   }
 
   randomLayout() {
-    this.props.reducer.dispatch({ type: RANDOM_IMAGE });
+    this.props.dispatch({ type: RANDOM_IMAGE });
   }
 
   removeAll() {
-    this.props.reducer.dispatch({ type: REMOVE_ALL_IMAGE });
+    this.props.dispatch({ type: REMOVE_ALL_IMAGE });
   }
 
   addImage() {
-    this.props.reducer.dispatch({ type: ADD_IMAGE });
-    this.props.reducer.dispatch({ type: MAKE_LAYOUTS });
+    this.props.dispatch({ type: ADD_IMAGE });
+    this.props.dispatch({ type: MAKE_LAYOUTS });
   }
 
   render() {
@@ -47,20 +45,6 @@ class TopBar extends Component {
             <img src={RemoveIcon} style={{ marginTop: 5 }} />
           </button>
         </div>
-        {/* <div className="search">
-          <button>
-            <div className="btn-line">
-              <SearchIcon className="icon-search" />
-              <input className="input-search" placeholder="ค้นหา" />
-            </div>
-          </button>
-        </div>
-        <div className="user">
-          <button>
-            <img src={UserIcon} />
-            <label>Tinnapop Suraphon</label>
-          </button>
-        </div> */}
       </div>
     );
   }

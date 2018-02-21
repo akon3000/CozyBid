@@ -61,7 +61,7 @@
 /******/ 	
 /******/ 	
 /******/ 	var hotApplyOnUpdate = true;
-/******/ 	var hotCurrentHash = "5353a2ee4afbed0a50d9"; // eslint-disable-line no-unused-vars
+/******/ 	var hotCurrentHash = "c5947ecad822da583129"; // eslint-disable-line no-unused-vars
 /******/ 	var hotRequestTimeout = 10000;
 /******/ 	var hotCurrentModuleData = {};
 /******/ 	var hotCurrentChildModule; // eslint-disable-line no-unused-vars
@@ -17406,12 +17406,16 @@ var Application = function (_Component) {
 
     var _this = _possibleConstructorReturn(this, (Application.__proto__ || Object.getPrototypeOf(Application)).call(this, props));
 
+    var _StoreImage$getState = _StoreImage2.default.getState(),
+        layouts = _StoreImage$getState.layouts,
+        dataImage = _StoreImage$getState.dataImage;
+
     _this.state = {
       tobBarHeight: 0,
       dataOverlay: null,
       isOverlay: false,
-      layouts: _StoreImage2.default.getState().layouts,
-      dataImage: _StoreImage2.default.getState().dataImage
+      layouts: layouts,
+      dataImage: dataImage
     };
     return _this;
   }
@@ -17442,7 +17446,9 @@ var Application = function (_Component) {
         'div',
         null,
         _react2.default.createElement(_TopBar2.default, {
-          reducer: _StoreImage2.default,
+          dispatch: function dispatch(action) {
+            return _StoreImage2.default.dispatch(action);
+          },
           ref: function ref(el) {
             _this3.topbarEl = el;
           }
@@ -17456,7 +17462,9 @@ var Application = function (_Component) {
           dataImage: this.state.dataImage
         }),
         this.state.isOverlay && _react2.default.createElement(_Overlay2.default, {
-          reducer: _StoreImage2.default,
+          dispatch: function dispatch(action) {
+            return _StoreImage2.default.dispatch(action);
+          },
           data: this.state.dataOverlay,
           onClose: function onClose() {
             return _this3.setState({ isOverlay: false, dataOverlay: null });
@@ -30278,10 +30286,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-// import SearchIcon from 'react-icons/lib/fa/search';
-
-// import UserIcon from '../../assert/007.png';
-
 
 var TopBar = function (_Component) {
   _inherits(TopBar, _Component);
@@ -30298,18 +30302,18 @@ var TopBar = function (_Component) {
   _createClass(TopBar, [{
     key: 'randomLayout',
     value: function randomLayout() {
-      this.props.reducer.dispatch({ type: _type.RANDOM_IMAGE });
+      this.props.dispatch({ type: _type.RANDOM_IMAGE });
     }
   }, {
     key: 'removeAll',
     value: function removeAll() {
-      this.props.reducer.dispatch({ type: _type.REMOVE_ALL_IMAGE });
+      this.props.dispatch({ type: _type.REMOVE_ALL_IMAGE });
     }
   }, {
     key: 'addImage',
     value: function addImage() {
-      this.props.reducer.dispatch({ type: _type.ADD_IMAGE });
-      this.props.reducer.dispatch({ type: _type.MAKE_LAYOUTS });
+      this.props.dispatch({ type: _type.ADD_IMAGE });
+      this.props.dispatch({ type: _type.MAKE_LAYOUTS });
     }
   }, {
     key: 'render',
@@ -31660,19 +31664,19 @@ var Overlay = function (_Component) {
   _createClass(Overlay, [{
     key: 'handleImage',
     value: function handleImage() {
-      this.props.reducer.dispatch({ type: _type.CHANGE_IMAGE, id: this.props.data.id, url: this.state.img });
+      this.props.dispatch({ type: _type.CHANGE_IMAGE, id: this.props.data.id, url: this.state.img });
       this.props.onClose();
     }
   }, {
     key: 'handleLink',
     value: function handleLink() {
-      this.props.reducer.dispatch({ type: _type.CHANGE_LINK, id: this.props.data.id, refer: this.state.refer });
+      this.props.dispatch({ type: _type.CHANGE_LINK, id: this.props.data.id, refer: this.state.refer });
       this.props.onClose();
     }
   }, {
     key: 'removeItem',
     value: function removeItem() {
-      this.props.reducer.dispatch({ type: _type.REMOVE_IMAGE, id: this.props.data.id });
+      this.props.dispatch({ type: _type.REMOVE_IMAGE, id: this.props.data.id });
       this.props.onClose();
     }
   }, {

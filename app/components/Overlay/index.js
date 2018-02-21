@@ -16,17 +16,17 @@ class Overlay extends Component {
   }
 
   handleImage() {
-    this.props.reducer.dispatch({ type: CHANGE_IMAGE, id: this.props.data.id, url: this.state.img });
+    this.props.dispatch({ type: CHANGE_IMAGE, id: this.props.data.id, url: this.state.img });
     this.props.onClose();
   }
 
   handleLink() {
-    this.props.reducer.dispatch({ type: CHANGE_LINK, id: this.props.data.id, refer: this.state.refer });
+    this.props.dispatch({ type: CHANGE_LINK, id: this.props.data.id, refer: this.state.refer });
     this.props.onClose();
   }
 
   removeItem() {
-    this.props.reducer.dispatch({ type: REMOVE_IMAGE, id: this.props.data.id });
+    this.props.dispatch({ type: REMOVE_IMAGE, id: this.props.data.id });
     this.props.onClose();
   }
 
